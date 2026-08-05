@@ -11,6 +11,13 @@ Take-home assignment for the Full-stack Senior AI-empowered application at Tailo
 - Google Apps Script Web App as the read/write bridge ([`apps-script/Code.gs`](apps-script/Code.gs))
 - GitHub Pages, deployed via GitHub Actions
 
+## Try it live
+
+The Google Sheet behind the live site is open for hands-on testing: **[Google Sheet](https://docs.google.com/spreadsheets/d/19BQVcpog1Z5r5LoK6eh2YdfAMS3X5IhShMNsdwj-Z9E/edit?usp=sharing)**
+
+- `menu` tab — editable by anyone with the link. Add, edit, or remove a row, then refresh the [live site](https://luhpaco.github.io/tailormind-menu-takehome/): the menu is fetched client-side at page load, so there's no redeploy involved.
+- `orders` tab — protected (view-only for anyone but the owner), so you can watch orders land as they're submitted through the site without being able to edit or delete them.
+
 ## Running locally
 
 ```sh
@@ -50,3 +57,4 @@ Add unit tests for the Apps Script's `doPost` validation logic (currently only m
 - The cart persists in `localStorage`, so it survives a page reload.
 - The Apps Script Web App URL is public and unauthenticated by design (the spec didn't ask for a login flow) — anyone with the URL could POST fake orders. There's no rate limiting or spam protection.
 - `image_url` is optional per menu row; the sample data ships without real images, so cards fall back to a placeholder background.
+- The Sheet is shared with edit access so reviewers can add products and see them reflected live, but `orders` is protected (Data > Protect sheets and ranges, owner-only edit) — sharing edit access to the whole file was the only way to keep both tabs in one spreadsheet as the spec asks, without exposing submitted orders (including test names/emails) to tampering. Menu vandalism, if it happens, is recoverable via Sheets' version history.
