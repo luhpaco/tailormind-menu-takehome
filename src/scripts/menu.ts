@@ -4,6 +4,9 @@ import { formatPrice } from '../lib/currency';
 
 const root = document.getElementById('menu-root');
 
+let itemsByCategory: Map<string, MenuItem[]> = new Map();
+let activeCategory: string | null = null;
+
 async function loadMenu(): Promise<void> {
   if (!root) return;
 
@@ -16,7 +19,9 @@ async function loadMenu(): Promise<void> {
       renderEmpty();
       return;
     }
-    renderMenu(items);
+    itemsByCategory = groupByCategory(items);
+    activeCategory = itemsByCategory.keys().next().value ?? null;
+    render();
   } catch (err) {
     renderError(err);
   }
@@ -32,25 +37,49 @@ function renderError(err: unknown): void {
     '<p class="state-message state-message--error">No se pudo cargar el menú. Intenta recargar la página.</p>';
 }
 
-function renderMenu(items: MenuItem[]): void {
-  root!.innerHTML = '';
-  const byCategory = groupByCategory(items);
+function render(): void {
+  if (!root || !activeCategory) return;
+  root.innerHTML = '';
 
-  for (const [category, categoryItems] of byCategory) {
-    const section = document.createElement('section');
-    section.className = 'menu-category';
+  root.append(renderTabs(), renderPanel());
+}
 
-    const heading = document.createElement('h2');
-    heading.textContent = category;
-    section.appendChild(heading);
+function renderTabs(): HTMLElement {
+  const tabs = document.createElement('div');
+  tabs.className = 'menu-tabs';
+  tabs.setAttribute('role', 'tablist');
+  tabs.setAttribute('aria-label', 'Categorías del menú');
 
-    const grid = document.createElement('div');
-    grid.className = 'menu-grid';
-    categoryItems.forEach((item) => grid.appendChild(renderCard(item)));
+  for (const category of itemsByCategory.keys()) {
+    const isActive = category === activeCategory;
 
-    section.appendChild(grid);
-    root!.appendChild(section);
+    const tab = document.createElement('button');
+    tab.type = 'button';
+    tab.className = 'menu-tab' + (isActive ? ' menu-tab--active' : '');
+    tab.textContent = category;
+    tab.setAttribute('role', 'tab');
+    tab.setAttribute('aria-selected', String(isActive));
+    tab.addEventListener('click', () => {
+      if (activeCategory === category) return;
+      activeCategory = category;
+      render();
+    });
+
+    tabs.appendChild(tab);
   }
+
+  return tabs;
+}
+
+function renderPanel(): HTMLElement {
+  const panel = document.createElement('div');
+  panel.className = 'menu-grid';
+  panel.setAttribute('role', 'tabpanel');
+
+  const items = itemsByCategory.get(activeCategory!) ?? [];
+  items.forEach((item) => panel.appendChild(renderCard(item)));
+
+  return panel;
 }
 
 function groupByCategory(items: MenuItem[]): Map<string, MenuItem[]> {
