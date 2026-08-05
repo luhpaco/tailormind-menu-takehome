@@ -1,17 +1,30 @@
 ---
-
+import '../styles/global.css';
 ---
 
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Menú | TailorMind Take-Home</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<div class="page">
+			<header class="page-header">
+				<h1>Nuestro menú</h1>
+				<p>Arma tu pedido y envíalo directamente desde acá.</p>
+			</header>
+
+			<main id="menu-root" aria-live="polite">
+				<p class="state-message">Cargando menú…</p>
+			</main>
+		</div>
+
+		<script>
+			import '../scripts/menu.ts';
+		</script>
 	</body>
 </html>

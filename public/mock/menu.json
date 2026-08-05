@@ -1,0 +1,66 @@
+[
+  {
+    "id": "p1",
+    "name": "Pizza Margarita",
+    "description": "Salsa de tomate, mozzarella y albahaca fresca.",
+    "price": 28,
+    "category": "Pizzas",
+    "image_url": ""
+  },
+  {
+    "id": "p2",
+    "name": "Pizza Pepperoni",
+    "description": "Salsa de tomate, mozzarella y pepperoni.",
+    "price": 32,
+    "category": "Pizzas",
+    "image_url": ""
+  },
+  {
+    "id": "p3",
+    "name": "Pizza Cuatro Quesos",
+    "description": "Mozzarella, parmesano, gorgonzola y queso de cabra.",
+    "price": 35,
+    "category": "Pizzas",
+    "image_url": ""
+  },
+  {
+    "id": "e1",
+    "name": "Tequeños",
+    "description": "Tequeños crocantes de queso con salsa guacamole.",
+    "price": 18,
+    "category": "Entradas",
+    "image_url": ""
+  },
+  {
+    "id": "e2",
+    "name": "Pan con ajo",
+    "description": "Pan artesanal horneado con mantequilla de ajo y perejil.",
+    "price": 12,
+    "category": "Entradas",
+    "image_url": ""
+  },
+  {
+    "id": "b1",
+    "name": "Chicha morada",
+    "description": "Bebida tradicional peruana de maíz morado, 500ml.",
+    "price": 8,
+    "category": "Bebidas",
+    "image_url": ""
+  },
+  {
+    "id": "b2",
+    "name": "Gaseosa",
+    "description": "Botella personal 500ml, sabor a elección.",
+    "price": 6,
+    "category": "Bebidas",
+    "image_url": ""
+  },
+  {
+    "id": "d1",
+    "name": "Tiramisú",
+    "description": "Clásico postre italiano con café y mascarpone.",
+    "price": 15,
+    "category": "Postres",
+    "image_url": ""
+  }
+]
