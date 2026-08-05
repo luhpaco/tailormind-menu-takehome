@@ -1,66 +1,82 @@
 [
   {
     "id": "p1",
-    "name": "Pizza Margarita",
-    "description": "Salsa de tomate, mozzarella y albahaca fresca.",
-    "price": 28,
-    "category": "Pizzas",
-    "image_url": ""
+    "name": "Causa Limeña",
+    "description": "Puré de papa amarilla sazonado con ají amarillo y limón, relleno de pollo y palta.",
+    "price": 18,
+    "category": "Entradas",
+    "image_url": "https://images.pexels.com/photos/30766468/pexels-photo-30766468.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     "id": "p2",
-    "name": "Pizza Pepperoni",
-    "description": "Salsa de tomate, mozzarella y pepperoni.",
-    "price": 32,
-    "category": "Pizzas",
-    "image_url": ""
+    "name": "Papa a la Huancaína",
+    "description": "Papas amarillas bañadas en salsa cremosa de ají amarillo, queso fresco y galleta.",
+    "price": 15,
+    "category": "Entradas",
+    "image_url": "https://images.pexels.com/photos/28448378/pexels-photo-28448378.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     "id": "p3",
-    "name": "Pizza Cuatro Quesos",
-    "description": "Mozzarella, parmesano, gorgonzola y queso de cabra.",
+    "name": "Anticuchos",
+    "description": "Brochetas de corazón de res marinadas en ají panca, a la parrilla con papa y choclo.",
+    "price": 20,
+    "category": "Entradas",
+    "image_url": "https://images.pexels.com/photos/32757019/pexels-photo-32757019.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": "p4",
+    "name": "Ceviche",
+    "description": "Pescado fresco marinado en limón con ají limo, cebolla morada, camote y choclo.",
     "price": 35,
-    "category": "Pizzas",
-    "image_url": ""
+    "category": "Platos de Fondo",
+    "image_url": "https://images.pexels.com/photos/31495671/pexels-photo-31495671.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
-    "id": "e1",
-    "name": "Tequeños",
-    "description": "Tequeños crocantes de queso con salsa guacamole.",
-    "price": 18,
-    "category": "Entradas",
-    "image_url": ""
+    "id": "p5",
+    "name": "Lomo Saltado",
+    "description": "Salteado de lomo de res con cebolla, tomate y papas fritas, servido con arroz.",
+    "price": 32,
+    "category": "Platos de Fondo",
+    "image_url": "https://images.pexels.com/photos/28503593/pexels-photo-28503593.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
-    "id": "e2",
-    "name": "Pan con ajo",
-    "description": "Pan artesanal horneado con mantequilla de ajo y perejil.",
+    "id": "p6",
+    "name": "Pollo a la Brasa",
+    "description": "Pollo entero rostizado a la leña, servido con papas fritas y ensalada.",
+    "price": 30,
+    "category": "Platos de Fondo",
+    "image_url": "https://images.pexels.com/photos/34110277/pexels-photo-34110277.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": "p7",
+    "name": "Arroz con Pollo",
+    "description": "Arroz verde con cilantro y presas de pollo, acompañado de salsa criolla.",
+    "price": 26,
+    "category": "Platos de Fondo",
+    "image_url": "https://images.pexels.com/photos/21821575/pexels-photo-21821575.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": "p8",
+    "name": "Rocoto Relleno",
+    "description": "Rocoto picante relleno de carne molida y queso, gratinado al horno.",
+    "price": 24,
+    "category": "Platos de Fondo",
+    "image_url": "https://images.pexels.com/photos/19359969/pexels-photo-19359969.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": "p9",
+    "name": "Suspiro a la Limeña",
+    "description": "Manjar blanco cubierto con merengue al oporto y canela.",
     "price": 12,
-    "category": "Entradas",
-    "image_url": ""
+    "category": "Postres",
+    "image_url": "https://images.pexels.com/photos/30820454/pexels-photo-30820454.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
-    "id": "b1",
-    "name": "Chicha morada",
-    "description": "Bebida tradicional peruana de maíz morado, 500ml.",
+    "id": "p10",
+    "name": "Chicha Morada",
+    "description": "Bebida refrescante de maíz morado, piña, canela y clavo de olor.",
     "price": 8,
     "category": "Bebidas",
-    "image_url": ""
-  },
-  {
-    "id": "b2",
-    "name": "Gaseosa",
-    "description": "Botella personal 500ml, sabor a elección.",
-    "price": 6,
-    "category": "Bebidas",
-    "image_url": ""
-  },
-  {
-    "id": "d1",
-    "name": "Tiramisú",
-    "description": "Clásico postre italiano con café y mascarpone.",
-    "price": 15,
-    "category": "Postres",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/1674758/pexels-photo-1674758.jpeg?auto=compress&cs=tinysrgb&w=800"
   }
 ]
