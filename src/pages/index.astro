@@ -18,13 +18,27 @@ import '../styles/global.css';
 				<p>Arma tu pedido y envíalo directamente desde acá.</p>
 			</header>
 
-			<main id="menu-root" aria-live="polite">
-				<p class="state-message">Cargando menú…</p>
-			</main>
+			<div class="layout">
+				<main id="menu-root" aria-live="polite">
+					<p class="state-message">Cargando menú…</p>
+				</main>
+
+				<aside class="cart-panel" aria-label="Carrito de compras">
+					<h2>Tu carrito</h2>
+					<div id="cart-items" class="cart-items">
+						<p class="state-message">Tu carrito está vacío.</p>
+					</div>
+					<div class="cart-total">
+						<span>Total</span>
+						<span id="cart-total">S/ 0.00</span>
+					</div>
+				</aside>
+			</div>
 		</div>
 
 		<script>
 			import '../scripts/menu.ts';
+			import '../scripts/cart.ts';
 		</script>
 	</body>
 </html>
