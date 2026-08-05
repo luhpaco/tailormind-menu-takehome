@@ -133,6 +133,7 @@ button {
 }
 
 .menu-card__add,
+.cart-submit,
 .cart-qty button {
   background: var(--color-accent);
   color: #fff;
@@ -141,7 +142,8 @@ button {
   padding: 0.45rem 0.9rem;
 }
 
-.menu-card__add:hover {
+.menu-card__add:hover,
+.cart-submit:hover {
   background: var(--color-accent-hover);
 }
 
@@ -216,6 +218,46 @@ button {
   border-top: 1px solid var(--color-border);
   padding-top: 0.75rem;
   margin-bottom: 1rem;
+}
+
+.cart-form label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 0.25rem;
+}
+
+.cart-form input {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  font: inherit;
+}
+
+.cart-submit {
+  width: 100%;
+  padding: 0.6rem;
+  font-weight: 600;
+}
+
+.cart-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cart-status {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.cart-status--success {
+  color: var(--color-success);
+}
+
+.cart-status--error {
+  color: var(--color-error);
 }
 
 .state-message {

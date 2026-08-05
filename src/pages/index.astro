@@ -32,6 +32,18 @@ import '../styles/global.css';
 						<span>Total</span>
 						<span id="cart-total">S/ 0.00</span>
 					</div>
+					<form id="cart-form" class="cart-form">
+						<label for="customer_name">Nombre</label>
+						<input id="customer_name" name="customer_name" type="text" required />
+
+						<label for="customer_email">Email</label>
+						<input id="customer_email" name="customer_email" type="email" required />
+
+						<button type="submit" class="cart-submit" id="cart-submit" disabled>
+							Enviar orden
+						</button>
+					</form>
+					<p id="cart-status" class="cart-status" role="status"></p>
 				</aside>
 			</div>
 		</div>
@@ -39,6 +51,7 @@ import '../styles/global.css';
 		<script>
 			import '../scripts/menu.ts';
 			import '../scripts/cart.ts';
+			import '../scripts/order.ts';
 		</script>
 	</body>
 </html>

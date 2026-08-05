@@ -13,3 +13,15 @@ export interface CartItem {
   price: number;
   qty: number;
 }
+
+export interface OrderPayload {
+  customer_name: string;
+  customer_email: string;
+  items: CartItem[];
+  total: number;
+}
+
+export interface OrderResponse {
+  ok: boolean;
+  error?: string;
+}
