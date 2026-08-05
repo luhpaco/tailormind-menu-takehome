@@ -1,43 +1,52 @@
-# Astro Starter Kit: Minimal
+# TailorMind Take-Home — Restaurant Menu & Cart
+
+**Live site:** https://luhpaco.github.io/tailormind-menu-takehome/
+
+Take-home assignment for the Full-stack Senior AI-empowered application at TailorMind. An Astro site reads a restaurant menu from Google Sheets, offers a client-side shopping cart, and submits orders as a new row in another Sheet tab via a Google Apps Script Web App.
+
+## Stack
+
+- [Astro](https://astro.build) — static site, vanilla TypeScript, no UI framework
+- Google Sheets as the backend (`menu` and `orders` tabs — schema in [`docs/sheets-schema.md`](docs/sheets-schema.md))
+- Google Apps Script Web App as the read/write bridge ([`apps-script/Code.gs`](apps-script/Code.gs))
+- GitHub Pages, deployed via GitHub Actions
+
+## Running locally
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Without a `PUBLIC_APPS_SCRIPT_URL` env var set, the site reads from a local mock menu (`public/mock/menu.json`) and shows an explicit "backend not configured" message if you try to submit an order — see [`apps-script/README.md`](apps-script/README.md) for how to deploy the real backend.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run test
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+runs the unit tests for the cart calculation logic (add/remove/quantity/subtotals/total).
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## How to make a pizza
 
-Any static assets, like images, can be placed in the `public/` directory.
+Mix flour, water, yeast, and salt into a dough, then let it rest for about an hour until it doubles in size. Stretch it out into a round base, spread a thin layer of tomato sauce, add cheese and your preferred toppings, and bake at high heat (250°C/480°F or more) for 8–10 minutes, until the crust is golden and the cheese is bubbling.
 
-## 🧞 Commands
+## What I'd do with another hour
 
-All commands are run from the root of the project, from a terminal:
+Add unit tests for the Apps Script's `doPost` validation logic (currently only manually verified against the real deployment, since Google Apps Script isn't trivial to unit-test in isolation). I'd also add a lightweight e2e test (Playwright) covering the full add-to-cart-to-order flow, a honeypot field or similar to reduce spam on the public Apps Script endpoint, and loading skeletons instead of plain-text loading states for a more polished feel.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Assumptions
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- The spec repeats the "include a short pizza-making paragraph in the README" requirement in points 1 and 4 (unrelated context each time). Interpreted as the same request — included once, above.
+- `menu` tab extended beyond the spec's stated minimum (name/description/price) with `id`, `category`, and `image_url`, to support grouping the menu and showing product images.
+- Order items are stored as a single JSON cell per order (`items_json`), not flattened columns or one row per item — matches the spec's literal "adds **one row**" wording, which only offers "JSON or flattened" as options.
+- Deployed on GitHub Pages (the spec left the platform choice open).
+- The cart's order POST uses `Content-Type: text/plain` to avoid the CORS preflight that Apps Script Web Apps can't handle well; this keeps the response body readable so the UI can show a real success/error message instead of firing blind.
+- The menu is fetched client-side at page-load time, not at Astro build time — so edits made directly in the Sheet show up without a redeploy, which is the actual point of using Sheets as a live backend.
+- An empty menu or a failed fetch shows an explicit state in the UI; there's no silent fallback to mock data in production.
+- Email validation is basic and client-side only (`type="email"` + a simple regex) — no real-address verification.
+- Currency is PEN, displayed as `S/ 12.50`; prices are stored as plain numbers in the Sheet.
+- UI copy is in Spanish; this README, code, and comments are in English.
+- No automated tests beyond targeted unit tests on the cart's calculation logic — see "What I'd do with another hour."
+- The cart persists in `localStorage`, so it survives a page reload.
+- The Apps Script Web App URL is public and unauthenticated by design (the spec didn't ask for a login flow) — anyone with the URL could POST fake orders. There's no rate limiting or spam protection.
+- `image_url` is optional per menu row; the sample data ships without real images, so cards fall back to a placeholder background.
